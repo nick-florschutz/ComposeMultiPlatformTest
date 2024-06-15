@@ -12,22 +12,33 @@ androidx-material = "1.12.0"
 androidx-test-junit = "1.1.5"
 compose-plugin = "1.6.10"
 junit = "4.13.2"
-kmpDateTimePicker = "1.0.2"
 kotlin = "2.0.0"
+# Multi Platform Constraint Layout
+constraintlayoutComposeMultiplatform = "0.4.0"
+# Multi Platform date & time picker
+kmpDateTimePicker = "1.0.2"
+# Coroutines
 kotlinxCoroutinesCore = "1.9.0-RC"
+# Date time
 kotlinxDatetime = "0.6.0"
+# Multi Screen size support
 windowSizeClassMultiplatform = "0.5.0"
+# Parcelable
 parcelize = "0.1.2"
+# dp & sp support for multi-platform
 sdpSspComposeMultiplatform = "1.0.1"
+# Decompose
 decompose = "2.2.0-alpha03"
+# Voyager
+voyager = "1.1.0-beta02"
+# Serialization
 kotlinxSerializationJson = "1.6.1"
+# Compose Extenstions
 extenstionsComposeJetbrains = "2.1.4-compose-experimental"
-
 # Firebase Services
 firebase = "1.12.0"
 
 [libraries]
-kmp-date-time-picker = { module = "network.chaintech:kmp-date-time-picker", version.ref = "kmpDateTimePicker" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -38,19 +49,35 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+# Multi Platform Constraint Layout
+constraintlayout-compose-multiplatform = { module = "tech.annexflow.compose:constraintlayout-compose-multiplatform", version.ref = "constraintlayoutComposeMultiplatform" }
+# Multi Platform date & time picker
+kmp-date-time-picker = { module = "network.chaintech:kmp-date-time-picker", version.ref = "kmpDateTimePicker" }
+# Coroutines
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+# Date time
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
+# Multi Screen size support
 multi-screensize-support = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "windowSizeClassMultiplatform" }
+# Parcelable
 parcelize = { module = "io.matthewnelson.kotlin-components:parcelize", version.ref = "parcelize" }
+# dp & sp support for multi-platform
 sdp-ssp-compose-multiplatform = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdpSspComposeMultiplatform" }
+# Decompose
 decompose-jetbrains = { module = "com.arkivanov.decomopse:extensions-compose-jetbrains", version.ref = "extenstionsComposeJetbrains" }
+# Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
-
 # Firebase Services
 gitlive-firebase-auth = { module = "dev.gitlive:firebase-auth", version.ref = "firebase" }
 gitlive-firebase-crashlytics = { module = "dev.gitlive:firebase-crashlytics", version.ref = "firebase" }
 gitlive-firebase-firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firebase" }
 gitlive-firebase-installations = { module = "dev.gitlive:firebase-installations", version.ref = "firebase" }
+# Voyager
+voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
+voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
+voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
+voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
+voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -58,4 +85,5 @@ androidLibrary = { id = "com.android.library", version.ref = "agp" }
 jetbrainsCompose = { id = "org.jetbrains.compose", version.ref = "compose-plugin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
+# Serialization
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

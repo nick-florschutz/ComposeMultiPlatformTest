@@ -77,6 +77,8 @@ kotlin {
             // Multi screen & window size support - https://github.com/chrisbanes/material3-windowsizeclass-multiplatform
             implementation(libs.multi.screensize.support)
 
+            // Multi-platform Constraint Layout - https://github.com/Lavmee/constraintlayout-compose-multiplatform/
+            implementation(libs.constraintlayout.compose.multiplatform)
 
         }
     }
