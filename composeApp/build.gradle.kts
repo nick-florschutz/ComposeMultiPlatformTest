@@ -18,7 +18,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -29,9 +29,9 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
-        
+
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
@@ -84,9 +84,6 @@ kotlin {
             // AAY Charts & Graphs for Multiplatform - https://github.com/TheChance101/AAY-chart
             implementation(libs.aay.chart)
 
-            // Pull to Refresh - https://github.com/MateriiApps/pullrefresh
-            implementation(libs.pullrefresh)
-
             // Room database
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
@@ -98,6 +95,13 @@ kotlin {
             implementation(libs.voyager.tabNavigator)
             implementation(libs.voyager.transitions)
             implementation(libs.voyager.koin.integration)
+
+            // Koin
+            implementation(libs.koin.compose)
+            runtimeOnly(libs.koin.core.coroutines)
+            runtimeOnly(libs.koin.test)
+            runtimeOnly(libs.koin.test.junit4)
+
         }
     }
 }
@@ -143,6 +147,7 @@ room {
     schemaDirectory("$projectDir/schemas")
 }
 
-//dependencies {
-//    ksp(libs.room.compiler)
-//}
+dependencies {
+    add("kspCommonMainMetadata", libs.room.compiler)
+    add("kspAndroid", libs.room.compiler)
+}
