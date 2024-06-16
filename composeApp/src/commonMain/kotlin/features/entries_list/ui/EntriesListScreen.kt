@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
 import features.entries_list.presentation.EntriesListScreenModel
@@ -39,7 +40,7 @@ class EntriesListScreen: Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(8.sdp)
+                    .padding(8.dp)
             ) {
                 OutlinedTextField(
                     value = textState,
@@ -59,7 +60,7 @@ class EntriesListScreen: Screen {
                 repeat(times = items) {
                     Text(
                         text = "Item: $it",
-                        fontSize = 16.ssp,
+                        fontSize = 16.sp,
                         maxLines = 1,
                         color = Color.Magenta,
                         textAlign = TextAlign.Center,

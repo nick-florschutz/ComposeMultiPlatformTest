@@ -7,7 +7,6 @@ import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-
 class EntriesListScreenModel : ScreenModel {
 
     private val _items = mutableStateOf(0)
@@ -21,7 +20,7 @@ class EntriesListScreenModel : ScreenModel {
             delay(5000)
             println("Adding Items...")
             _items.value = 100
-            println("Items Added. Totel Items: ${_items.value}")
+            println("Items Added. Total Items: ${_items.value}")
         }
     }
 
