@@ -40,7 +40,7 @@ class EntriesListScreen: Screen {
                 horizontalAlignment = Alignment.CenterHorizontally,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(8.dp)
+                    .padding(8.sdp)
             ) {
                 OutlinedTextField(
                     value = textState,
@@ -60,7 +60,7 @@ class EntriesListScreen: Screen {
                 repeat(times = items) {
                     Text(
                         text = "Item: $it",
-                        fontSize = 16.sp,
+                        fontSize = 16.ssp,
                         maxLines = 1,
                         color = Color.Magenta,
                         textAlign = TextAlign.Center,
