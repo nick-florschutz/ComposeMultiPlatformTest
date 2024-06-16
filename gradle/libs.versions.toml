@@ -41,6 +41,11 @@ extenstionsComposeJetbrains = "2.1.4-compose-experimental"
 firebase = "1.12.0"
 # Pull to refresh
 pullrefresh = "1.4.0-beta02"
+# Room Database
+room = "2.7.0-alpha01"
+sqlite = "2.5.0-SNAPSHOT"
+# KSP
+ksp = "1.9.23-1.0.19"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -86,6 +91,12 @@ voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", vers
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
 voyager-tabNavigator = { module = "cafe.adriel.voyager:voyager-tab-navigator", version.ref = "voyager" }
 voyager-transitions = { module = "cafe.adriel.voyager:voyager-transitions", version.ref = "voyager" }
+voyager-koin-integration = { module = "cafe.adriel.voyager:voyager-koin", version.ref = "voyager" }
+# Room Database
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room-runtime-android = { module = "androidx.room:room-runtime-android", version.ref = "room" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
@@ -95,3 +106,7 @@ compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "
 kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 # Serialization
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+# Room database
+room = { id = "androidx.room", version.ref = "room" }
+# KSP
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

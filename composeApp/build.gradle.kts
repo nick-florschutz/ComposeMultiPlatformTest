@@ -7,7 +7,8 @@ plugins {
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.kotlinSerialization)
-
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
 }
 
 kotlin {
@@ -85,6 +86,18 @@ kotlin {
 
             // Pull to Refresh - https://github.com/MateriiApps/pullrefresh
             implementation(libs.pullrefresh)
+
+            // Room database
+            implementation(libs.room.runtime)
+            implementation(libs.sqlite.bundled)
+
+            // Voyager
+            implementation(libs.voyager.navigator)
+            implementation(libs.voyager.screenModel)
+            implementation(libs.voyager.bottomSheetNavigator)
+            implementation(libs.voyager.tabNavigator)
+            implementation(libs.voyager.transitions)
+            implementation(libs.voyager.koin.integration)
         }
     }
 }
@@ -126,3 +139,10 @@ android {
     }
 }
 
+room {
+    schemaDirectory("$projectDir/schemas")
+}
+
+//dependencies {
+//    ksp(libs.room.compiler)
+//}
