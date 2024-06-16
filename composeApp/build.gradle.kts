@@ -82,6 +82,9 @@ kotlin {
 
             // AAY Charts & Graphs for Multiplatform - https://github.com/TheChance101/AAY-chart
             implementation(libs.aay.chart)
+
+            // Pull to Refresh - https://github.com/MateriiApps/pullrefresh
+            implementation(libs.pullrefresh)
         }
     }
 }

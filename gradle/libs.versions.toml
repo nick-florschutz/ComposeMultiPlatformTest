@@ -39,6 +39,8 @@ kotlinxSerializationJson = "1.6.1"
 extenstionsComposeJetbrains = "2.1.4-compose-experimental"
 # Firebase Services
 firebase = "1.12.0"
+# Pull to refresh
+pullrefresh = "1.4.0-beta02"
 
 [libraries]
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -67,6 +69,8 @@ multi-screensize-support = { module = "dev.chrisbanes.material3:material3-window
 parcelize = { module = "io.matthewnelson.kotlin-components:parcelize", version.ref = "parcelize" }
 # dp & sp support for multi-platform
 sdp-ssp-compose-multiplatform = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdpSspComposeMultiplatform" }
+# Pull to refresh
+pullrefresh = { module = "dev.materii.pullrefresh:pullrefresh", version.ref = "pullrefresh" }
 # Decompose
 decompose-jetbrains = { module = "com.arkivanov.decomopse:extensions-compose-jetbrains", version.ref = "extenstionsComposeJetbrains" }
 # Serialization
