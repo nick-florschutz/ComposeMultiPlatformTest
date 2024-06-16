@@ -13,6 +13,8 @@ androidx-test-junit = "1.1.5"
 compose-plugin = "1.6.10"
 junit = "4.13.2"
 kotlin = "2.0.0"
+# AAY Charts and Graphs
+aay-chart = "Beta-0.0.5"
 # Multi Platform Constraint Layout
 constraintlayoutComposeMultiplatform = "0.4.0"
 # Multi Platform date & time picker
@@ -49,6 +51,8 @@ androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version
 androidx-material = { group = "com.google.android.material", name = "material", version.ref = "androidx-material" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "androidx-constraintlayout" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+# AAY Charts & Graphs
+aay-chart = { module = "io.github.thechance101:chart", version.ref = "aay-chart" }
 # Multi Platform Constraint Layout
 constraintlayout-compose-multiplatform = { module = "tech.annexflow.compose:constraintlayout-compose-multiplatform", version.ref = "constraintlayoutComposeMultiplatform" }
 # Multi Platform date & time picker

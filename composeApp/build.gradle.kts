@@ -80,6 +80,8 @@ kotlin {
             // Multi-platform Constraint Layout - https://github.com/Lavmee/constraintlayout-compose-multiplatform/
             implementation(libs.constraintlayout.compose.multiplatform)
 
+            // AAY Charts & Graphs for Multiplatform - https://github.com/TheChance101/AAY-chart
+            implementation(libs.aay.chart)
         }
     }
 }
