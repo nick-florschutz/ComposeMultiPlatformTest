@@ -29,18 +29,12 @@ windowSizeClassMultiplatform = "0.5.0"
 parcelize = "0.1.2"
 # dp & sp support for multi-platform
 sdpSspComposeMultiplatform = "1.0.1"
-# Decompose
-decompose = "2.2.0-alpha03"
 # Voyager
 voyager = "1.1.0-beta02"
 # Serialization
 kotlinxSerializationJson = "1.6.1"
-# Compose Extenstions
-extenstionsComposeJetbrains = "2.1.4-compose-experimental"
 # Firebase Services
 firebase = "1.12.0"
-# Pull to refresh
-pullrefresh = "1.4.0-beta02"
 # Room Database
 room = "2.7.0-alpha04"
 sqlite = "2.5.0-SNAPSHOT"
@@ -77,10 +71,6 @@ multi-screensize-support = { module = "dev.chrisbanes.material3:material3-window
 parcelize = { module = "io.matthewnelson.kotlin-components:parcelize", version.ref = "parcelize" }
 # dp & sp support for multi-platform
 sdp-ssp-compose-multiplatform = { module = "network.chaintech:sdp-ssp-compose-multiplatform", version.ref = "sdpSspComposeMultiplatform" }
-# Pull to refresh
-pullrefresh = { module = "dev.materii.pullrefresh:pullrefresh", version.ref = "pullrefresh" }
-# Decompose
-decompose-jetbrains = { module = "com.arkivanov.decomopse:extensions-compose-jetbrains", version.ref = "extenstionsComposeJetbrains" }
 # Serialization
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 # Firebase Services
@@ -101,7 +91,6 @@ room-runtime-android = { module = "androidx.room:room-runtime-android", version.
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 # Koin
-koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
 koin-core-coroutines = { module = "io.insert-koin:koin-core-coroutines", version.ref = "koin" }
 koin-test = { module = "io.insert-koin:koin-test", version.ref = "koin" }
 koin-test-junit4 = { module = "io.insert-koin:koin-test-junit4", version.ref = "koin" }
