@@ -8,7 +8,6 @@ import org.koin.compose.KoinApplication
 @Composable
 @Preview
 fun App() {
-
     KoinApplication(
         application = {
             modules(appModules())
