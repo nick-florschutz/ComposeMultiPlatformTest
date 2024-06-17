@@ -28,11 +28,11 @@ import network.chaintech.sdpcomposemultiplatform.sdp
  */
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun <T> PullToRefreshLazyColumn(
+fun <ItemType> PullToRefreshLazyColumn(
     modifier: Modifier = Modifier,
     onRefresh: () -> Unit,
-    items: List<T>,
-    itemContent: @Composable (T) -> Unit,
+    items: List<ItemType>,
+    itemContent: @Composable (ItemType) -> Unit,
     isRefreshing: Boolean,
     contentPadding: PaddingValues = PaddingValues(0.sdp),
     lazyColumnHorizontalAlignment: Alignment.Horizontal = Alignment.CenterHorizontally,
