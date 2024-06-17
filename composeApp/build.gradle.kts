@@ -102,6 +102,8 @@ kotlin {
             runtimeOnly(libs.koin.test)
             runtimeOnly(libs.koin.test.junit4)
 
+            // Napier Logging - https://github.com/AAkira/Napier
+            implementation(libs.napier)
         }
     }
 }
