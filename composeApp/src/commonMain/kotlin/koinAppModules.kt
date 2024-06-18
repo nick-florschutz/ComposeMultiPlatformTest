@@ -1,6 +1,6 @@
-import features.entries_list.domain.entriesListModule
+import features.entries_list.domain.buildEntriesListModule
 
 
-fun appModules() = listOf(
-    entriesListModule,
+fun appModules(context: Any? = null) = listOf(
+    buildEntriesListModule(context),
 )

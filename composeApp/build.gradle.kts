@@ -35,6 +35,9 @@ kotlin {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            // Napier Logging - https://github.com/AAkira/Napier
+            implementation(libs.napier)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -99,11 +102,13 @@ kotlin {
             // Koin
             implementation(libs.koin.compose)
             runtimeOnly(libs.koin.core.coroutines)
+            runtimeOnly(libs.koin.core)
             runtimeOnly(libs.koin.test)
             runtimeOnly(libs.koin.test.junit4)
 
-            // Napier Logging - https://github.com/AAkira/Napier
-            implementation(libs.napier)
+            // datastore
+            implementation(libs.datastore.preferences)
+            implementation(libs.atomicfu)
         }
     }
 }

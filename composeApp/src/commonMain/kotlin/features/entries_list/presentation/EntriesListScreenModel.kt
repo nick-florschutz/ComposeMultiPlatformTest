@@ -3,15 +3,19 @@ package features.entries_list.presentation
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
+import data_sources.preferences.DataStoreRepository
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class EntriesListScreenModel : ScreenModel {
+class EntriesListScreenModel(
+    private val dataStoreRepository: DataStoreRepository
+) : ScreenModel {
 
-    private val _items = mutableStateListOf<Int>()
+    private val _items = mutableStateListOf<Int>().apply {
+        addAll(0..50)
+    }
     val items: List<Int> = _items
 
     private val _textState = mutableStateOf("")
@@ -22,17 +26,19 @@ class EntriesListScreenModel : ScreenModel {
 
     init {
         screenModelScope.launch {
-            delay(5000)
-            println("Adding Items...")
-            _items.addAll(
-                (0..10)
-            )
-            println("Items Added. Total Items: ${_items.size}")
+            dataStoreRepository.readStringValue(savedTextDataStoreKey).collect {
+                _textState.value = it
+            }
+
         }
     }
 
     fun setInputText(text: String) {
-        _textState.value = text
+//        _textState.value = text
+
+        screenModelScope.launch {
+            dataStoreRepository.saveStringValue(savedTextDataStoreKey, text)
+        }
     }
 
     fun onPullToRefreshTriggered() {
@@ -48,5 +54,9 @@ class EntriesListScreenModel : ScreenModel {
             println("Items Added. Total Items: ${_items.size}")
             _isLoading.value = false
         }
+    }
+
+    companion object {
+        private const val savedTextDataStoreKey = "saved_text"
     }
 }

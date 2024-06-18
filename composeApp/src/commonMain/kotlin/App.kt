@@ -4,20 +4,26 @@ import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.navigator.Navigator
 import features.entries_list.ui.EntriesListScreen
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import org.koin.compose.KoinApplication
 
 @Composable
 @Preview
 fun App() {
-    KoinApplication(
-        application = {
-            modules(appModules())
-        }
-    ) {
-        MaterialTheme {
-            Navigator(
-                screen = EntriesListScreen()
-            )
-        }
+
+//    KoinApplication(
+//        application = {
+//            modules(appModules(context))
+//        }
+//    ) {
+//        MaterialTheme {
+//            Navigator(
+//                screen = EntriesListScreen()
+//            )
+//        }
+//    }
+
+    MaterialTheme {
+        Navigator(
+            screen = EntriesListScreen()
+        )
     }
 }
