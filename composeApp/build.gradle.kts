@@ -27,8 +27,6 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
-            // Required when using NativeSQLiteDriver
-//            linkerOpts.add("-lsqlite3")
         }
     }
 
@@ -170,9 +168,3 @@ dependencies {
     add("kspCommonMainMetadata", libs.room.compiler)
     add("kspAndroid", libs.room.compiler)
 }
-
-//tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
-//    if (name != "kspCommonMainKotlinMetadata" ) {
-//        dependsOn("kspCommonMainKotlinMetadata")
-//    }
-//}
