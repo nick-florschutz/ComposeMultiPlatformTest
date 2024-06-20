@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.koinScreenModel
+import data_sources.local.entities.Person
 import features.entries_list.presentation.EntriesListScreenModel
 import network.chaintech.sdpcomposemultiplatform.sdp
 import network.chaintech.sdpcomposemultiplatform.ssp
@@ -34,6 +36,8 @@ class EntriesListScreen: Screen {
 
         val items = screenModel.items
         val textState by screenModel.textState
+
+        val peopleList = screenModel.peopleList
 
         val isLoading by screenModel.isLoading
 
@@ -65,24 +69,44 @@ class EntriesListScreen: Screen {
                         .fillMaxWidth()
                         .padding(16.sdp)
                 )
+
+                Button(
+                    onClick = {
+                        screenModel.onSaveButtonClicked(
+                            Person(
+                                firstName = textState,
+                                secondName = null,
+                            )
+                        )
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = "Save",
+                        fontSize = 14.ssp,
+                        textAlign = TextAlign.Center,
+                        modifier = Modifier.padding(16.sdp)
+                    )
+                }
             }
 
             PullToRefreshLazyColumn(
-                items = items,
+                items = peopleList,
                 isRefreshing = isLoading,
                 onRefresh = {
                     screenModel.onPullToRefreshTriggered()
                 },
                 itemContent = { item ->
                     Text(
-                        text = "Item $item",
+                        text = "Item ${item.localId} ${item.firstName}",
                         fontSize = 14.ssp,
                         textAlign = TextAlign.Center,
                         modifier = Modifier
                             .fillMaxWidth()
                             .border(1.sdp, Color.Black)
                             .clickable {
-                                println("Tag: $TAG \nItem $item clicked")
+                                println("Tag: $TAG \nItem ${item.localId} ${item.firstName} clicked")
                             }
                             .padding(16.sdp)
                     )

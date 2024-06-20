@@ -27,10 +27,16 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            // Required when using NativeSQLiteDriver
+//            linkerOpts.add("-lsqlite3")
         }
     }
 
     sourceSets {
+
+        iosMain {
+            kotlin.srcDir("build/generated/ksp/metadata")
+        }
 
         androidMain.dependencies {
             implementation(compose.preview)
@@ -109,8 +115,14 @@ kotlin {
             // datastore
             implementation(libs.datastore.preferences)
             implementation(libs.atomicfu)
+
+            // Moko Permissions
+////            implementation(libs.permissions)
+            implementation(libs.moko.permissions.compose) // permissions api + compose extensions
+            implementation(libs.moko.permissions.test)
         }
     }
+
 }
 
 android {
@@ -158,3 +170,9 @@ dependencies {
     add("kspCommonMainMetadata", libs.room.compiler)
     add("kspAndroid", libs.room.compiler)
 }
+
+//tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+//    if (name != "kspCommonMainKotlinMetadata" ) {
+//        dependsOn("kspCommonMainKotlinMetadata")
+//    }
+//}
