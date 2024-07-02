@@ -42,12 +42,20 @@ kotlin {
 
             // Napier Logging - https://github.com/AAkira/Napier
             implementation(libs.napier)
+
+            // CameraX - https://developer.android.com/jetpack/androidx/releases/camera
+            implementation(libs.androidx.camera.lifecycle)
+            implementation(libs.androidx.camera.view)
+//            implementation(libs.androidx.camera.core)
+            implementation(libs.androidx.camera.camera2)
         }
         commonMain.dependencies {
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material)
             implementation(compose.ui)
+            implementation(compose.material3)
+            implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
 
@@ -118,6 +126,10 @@ kotlin {
 ////            implementation(libs.permissions)
             implementation(libs.moko.permissions.compose) // permissions api + compose extensions
             implementation(libs.moko.permissions.test)
+
+            // Konnectivity - https://github.com/plusmobileapps/konnectivity
+            implementation(libs.konnectivity)
+
         }
     }
 
