@@ -23,9 +23,7 @@ class EntriesListScreenModel(
     private val _screenModelState: MutableState<ScreenModelState> = mutableStateOf(ScreenModelState.Loading)
     val screenModelState: State<ScreenModelState> = _screenModelState
 
-    private val _items = mutableStateListOf<Int>().apply {
-        addAll(0..50)
-    }
+    private val _items = buildList { addAll(0..50) }
     val items: List<Int> = _items
 
     private val _peopleList = mutableStateListOf<Person>()
