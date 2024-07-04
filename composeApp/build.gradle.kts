@@ -1,5 +1,7 @@
+import org.jetbrains.compose.ExperimentalComposeLibrary
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSetTree
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
@@ -12,10 +14,23 @@ plugins {
 }
 
 kotlin {
+    tasks.create("testClasses")
+
     androidTarget {
         @OptIn(ExperimentalKotlinGradlePluginApi::class)
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_11)
+        }
+
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        instrumentedTestVariant {
+            sourceSetTree.set(KotlinSourceSetTree.test)
+
+            dependencies {
+                implementation(libs.core.ktx)
+                implementation(libs.compose.ui.test.junit4.android)
+                implementation(libs.compose.ui.test.manifest)
+            }
         }
     }
 
@@ -27,6 +42,8 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+
+
         }
     }
 
@@ -76,15 +93,16 @@ kotlin {
 
             /********* Firebase - https://github.com/gitliveapp/firebase-kotlin-sdk/ *********/
             // Firebase Crashlytics
-            implementation(libs.gitlive.firebase.crashlytics)
+//            implementation(libs.gitlive.firebase.crashlytics)
+//            implementation(libs.gitlive.firebase.common)
             // Firebase Auth
-            implementation(libs.gitlive.firebase.auth)
+//            implementation(libs.gitlive.firebase.auth)
             // Firebase Firestore
-            implementation(libs.gitlive.firebase.firestore)
+//            implementation(libs.gitlive.firebase.firestore)
             // Firebase Storage
 //            implementation("dev.gitlive:firebase-storage:1.12.0")
             // Firebase Installations
-            implementation(libs.gitlive.firebase.installations)
+//            implementation(libs.gitlive.firebase.installations)
             /*********************************************************************************/
 
             // Kotlin Serialization - https://github.com/Kotlin/kotlinx.serialization
@@ -131,6 +149,16 @@ kotlin {
             implementation(libs.konnectivity)
 
         }
+        commonTest {
+            dependencies {
+//                implementation(libs.kotlin.test)
+                implementation(kotlin("test-annotations-common"))
+                implementation(libs.assertk)
+
+                @OptIn(ExperimentalComposeLibrary::class)
+                implementation(compose.uiTest)
+            }
+        }
     }
 
 }
@@ -149,6 +177,8 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     packaging {
         resources {

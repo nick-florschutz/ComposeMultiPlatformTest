@@ -1,8 +1,12 @@
 package features.camera.data
 
 import androidx.compose.runtime.saveable.listSaver
-import kotlinx.serialization.Serializable
 
+/**
+ * Holds the state of the camera permission dialog.
+ * @param uiPermissionState The state of the camera permission dialog.
+ * @param isAlwaysDeniedDialogVisible Whether the always denied dialog is visible.
+ */
 data class CameraPermissionState(
     val uiPermissionState: UiPermissionState,
     val isAlwaysDeniedDialogVisible: Boolean = false

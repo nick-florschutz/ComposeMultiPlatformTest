@@ -4,10 +4,12 @@ import androidx.compose.animation.AnimatedContent
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.semantics.contentDescription
+import androidx.compose.ui.semantics.semantics
 import backend_features.screen_model_state.ScreenModelState
 import backend_features.screen_model_state.ScreenModelStateError
 
@@ -30,7 +32,11 @@ fun <DataType> StateScreen(
             @Suppress("UNCHECKED_CAST")
             when (screenModelState) {
                 ScreenModelState.Loading -> {
-                    CircularProgressIndicator()
+                    CircularProgressIndicator(
+                        modifier = Modifier.semantics {
+                            contentDescription = "Loading"
+                        }
+                    )
                 }
                 is ScreenModelState.Error -> {
                     when (screenModelState.error) {

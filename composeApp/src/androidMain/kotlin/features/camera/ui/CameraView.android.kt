@@ -114,7 +114,6 @@ actual fun CameraPreviewView(modifier: Modifier) {
         }
     }
 
-
 }
 
 suspend fun Context.getCameraProvider(): ProcessCameraProvider = suspendCoroutine { continuation ->

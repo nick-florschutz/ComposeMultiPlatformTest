@@ -32,6 +32,7 @@ fun getRoomDatabase(
 ): PeopleDatabase {
     return builder
         .setDriver(BundledSQLiteDriver())
+        .fallbackToDestructiveMigrationOnDowngrade(true)
         .setQueryCoroutineContext(Dispatchers.IO)
         .build()
 }

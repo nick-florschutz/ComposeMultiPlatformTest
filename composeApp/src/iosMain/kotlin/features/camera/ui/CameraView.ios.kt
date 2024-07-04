@@ -28,26 +28,34 @@ import platform.UIKit.UIView
 @OptIn(ExperimentalForeignApi::class)
 @Composable
 actual fun CameraPreviewView(modifier: Modifier) {
-    val device = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).firstOrNull { device ->
-        (device as AVCaptureDevice).position == AVCaptureDevicePositionBack
-    }!! as AVCaptureDevice
+    val device = remember {
+        AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo).firstOrNull { device ->
+            (device as AVCaptureDevice).position == AVCaptureDevicePositionBack
+        }!! as AVCaptureDevice
+    }
 
-    val input = AVCaptureDeviceInput.deviceInputWithDevice(device, null) as AVCaptureDeviceInput
+    val input = remember {
+        AVCaptureDeviceInput.deviceInputWithDevice(device, null) as AVCaptureDeviceInput
+    }
 
-    val output = AVCaptureStillImageOutput()
-    output.outputSettings = mapOf(AVVideoCodecKey to AVVideoCodecJPEG)
+    val output = remember {
+        AVCaptureStillImageOutput().apply {
+            outputSettings = mapOf(AVVideoCodecKey to AVVideoCodecJPEG)
+        }
+    }
 
-    val session = AVCaptureSession()
-
-    session.sessionPreset = AVCaptureSessionPresetPhoto
-
-    session.addInput(input)
-    session.addOutput(output)
+    val session = remember {
+        AVCaptureSession().apply {
+            sessionPreset = AVCaptureSessionPresetPhoto
+            addInput(input)
+            addOutput(output)
+        }
+    }
 
     val cameraPreviewLayer = remember { AVCaptureVideoPreviewLayer(session = session) }
 
     UIKitView(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         background = Color.Black,
         factory = {
             val container = UIView()
@@ -62,6 +70,11 @@ actual fun CameraPreviewView(modifier: Modifier) {
             container.layer.setFrame(rect)
             cameraPreviewLayer.setFrame(rect)
             CATransaction.commit()
+        },
+        onRelease = { container: UIView ->
+            session.stopRunning()
+            session.removeInput(input)
+            session.removeOutput(output)
         }
     )
 }

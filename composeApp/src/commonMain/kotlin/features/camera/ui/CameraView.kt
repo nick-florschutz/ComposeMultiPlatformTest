@@ -14,7 +14,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.AlertDialog
 import androidx.compose.material.Button
-import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
@@ -83,6 +82,24 @@ fun CameraView(
     var isPermissionChecked by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
+        if (permissionsController.isPermissionGranted(Permission.CAMERA)) {
+            hasPermissionAlready = permissionsController.isPermissionGranted(Permission.CAMERA)
+            isPermissionChecked = true
+            return@LaunchedEffect
+        }
+
+        try {
+            permissionsController.providePermission(Permission.CAMERA)
+            state = state.copy(uiPermissionState = UiPermissionState.GRANTED)
+        } catch (deniedAlways: DeniedAlwaysException) {
+            state = state.copy(
+                uiPermissionState = UiPermissionState.ALWAYS_DENIED,
+                isAlwaysDeniedDialogVisible = true,
+            )
+        } catch (denied: DeniedException) {
+            state = state.copy(uiPermissionState = UiPermissionState.DENIED_ONCE)
+        }
+
         hasPermissionAlready = permissionsController.isPermissionGranted(Permission.CAMERA)
         isPermissionChecked = true
     }
@@ -151,18 +168,19 @@ fun CameraView(
                     CameraPermission(
                         state = state,
                         onRequestPermission = {
-                            coroutineScope.launch {
-                                try {
+                            try {
+                                coroutineScope.launch {
                                     permissionsController.providePermission(Permission.CAMERA)
-                                    state = state.copy(uiPermissionState = UiPermissionState.GRANTED)
-                                } catch (deniedAlways: DeniedAlwaysException) {
-                                    state = state.copy(
-                                        uiPermissionState = UiPermissionState.ALWAYS_DENIED,
-                                        isAlwaysDeniedDialogVisible = true,
-                                    )
-                                } catch (denied: DeniedException) {
-                                    state = state.copy(uiPermissionState = UiPermissionState.DENIED_ONCE)
                                 }
+                                state = state.copy(uiPermissionState = UiPermissionState.GRANTED)
+                            } catch (deniedAlways: DeniedAlwaysException) {
+                                state = state.copy(
+                                    uiPermissionState = UiPermissionState.ALWAYS_DENIED,
+                                    isAlwaysDeniedDialogVisible = true,
+                                )
+                            } catch (denied: DeniedException) {
+                                state =
+                                    state.copy(uiPermissionState = UiPermissionState.DENIED_ONCE)
                             }
                         },
                         openSettings = { permissionsController.openAppSettings() },
@@ -172,7 +190,8 @@ fun CameraView(
             }
         } else {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-                CircularProgressIndicator()
+//                CircularProgressIndicator()
+                Text("Loading...")
             }
         }
     }

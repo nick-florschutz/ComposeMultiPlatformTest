@@ -45,11 +45,13 @@ class EntriesListScreenModel(
         }
 
         screenModelScope.launch {
+            delay(1000)
             loadPeople()
 
-            delay(1500)
-
-            _screenModelState.value = ScreenModelState.Success(peopleList)
+            launch {
+                delay(1500)
+                _screenModelState.value = ScreenModelState.Success(peopleList)
+            }
         }
     }
 
@@ -72,7 +74,7 @@ class EntriesListScreenModel(
 
     fun onSaveButtonClicked(person: Person) {
         screenModelScope.launch {
-            peopleDao.upsert(person)
+            peopleDao.insert(person)
         }
     }
 
