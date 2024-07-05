@@ -74,7 +74,7 @@ class EntriesListScreenModel(
 
     fun onSaveButtonClicked(person: Person) {
         screenModelScope.launch {
-            peopleDao.insert(person)
+            peopleDao.upsert(person)
         }
     }
 

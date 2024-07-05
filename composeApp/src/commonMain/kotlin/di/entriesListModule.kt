@@ -1,4 +1,4 @@
-package features.entries_list.domain
+package di
 
 import com.plusmobileapps.konnectivity.Konnectivity
 import data_sources.local.PeopleDao

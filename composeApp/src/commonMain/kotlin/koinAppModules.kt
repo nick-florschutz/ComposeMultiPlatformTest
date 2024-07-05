@@ -1,4 +1,4 @@
-import features.entries_list.domain.buildEntriesListModule
+import di.buildEntriesListModule
 
 
 fun appModules(context: Any? = null) = listOf(

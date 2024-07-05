@@ -16,6 +16,7 @@ fun getDatabaseBuilder(): RoomDatabase.Builder<PeopleDatabase> {
         factory =  { PeopleDatabase::class.instantiateImpl() },
     )
 }
+
 @OptIn(ExperimentalForeignApi::class)
 private fun fileDirectory(): String {
     val documentDirectory: NSURL? = NSFileManager.defaultManager.URLForDirectory(
