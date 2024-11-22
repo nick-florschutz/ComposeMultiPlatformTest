@@ -4,6 +4,7 @@ import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
+import backend_features.firebase_authentication.FirebaseAuthManager
 import backend_features.screen_model_state.ScreenModelState
 import cafe.adriel.voyager.core.model.ScreenModel
 import cafe.adriel.voyager.core.model.screenModelScope
@@ -12,12 +13,14 @@ import data_sources.local.PeopleDao
 import data_sources.local.entities.Person
 import data_sources.preferences.DataStoreRepository
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class EntriesListScreenModel(
     private val dataStoreRepository: DataStoreRepository,
     private val peopleDao: PeopleDao,
     private val konnectivity: Konnectivity,
+    private val firebaseAuthManager: FirebaseAuthManager,
 ) : ScreenModel {
 
     private val _screenModelState: MutableState<ScreenModelState> = mutableStateOf(ScreenModelState.Loading)
@@ -37,6 +40,8 @@ class EntriesListScreenModel(
 
     val networkStatus = konnectivity.isConnectedState
 
+    val firebaseUserEmail = firebaseAuthManager.firebaseUser.asStateFlow()
+
     init {
         screenModelScope.launch {
             dataStoreRepository.readStringValue(savedTextDataStoreKey).collect {
@@ -53,6 +58,23 @@ class EntriesListScreenModel(
                 _screenModelState.value = ScreenModelState.Success(peopleList)
             }
         }
+
+//        screenModelScope.launch {
+//            launch {
+//                delay(5000)
+//
+//                firebaseAuthManager.signIn(
+//                    email = "duplication3@testing.com",
+//                    password = "testing7",
+//                )
+//            }.join()
+//
+//            launch {
+//                delay(1500)
+//                firebaseAuthManager.signOut()
+//            }
+//
+//        }
     }
 
     fun setInputText(text: String) {

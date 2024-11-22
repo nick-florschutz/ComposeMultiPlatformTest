@@ -1,5 +1,6 @@
 package di
 
+import backend_features.firebase_authentication.FirebaseAuthManager
 import com.plusmobileapps.konnectivity.Konnectivity
 import data_sources.local.PeopleDao
 import data_sources.local.PeopleDatabase
@@ -14,5 +15,6 @@ fun buildEntriesListModule(context: Any? = null) = module {
     single { DataStoreRepository(createDataStore(context = context)) }
     single { get<PeopleDatabase>().peopleDao() }.bind(PeopleDao::class)
     single { Konnectivity() }
-    single { EntriesListScreenModel(get(), get(), get()) }
+    single { FirebaseAuthManager }
+    single { EntriesListScreenModel(get(), get(), get(), get()) }
 }

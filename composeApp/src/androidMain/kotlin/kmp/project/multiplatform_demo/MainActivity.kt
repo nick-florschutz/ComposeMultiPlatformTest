@@ -9,6 +9,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import appModules
 import data_sources.local.getDatabaseBuilder
 import data_sources.local.getRoomDatabase
+import dev.gitlive.firebase.Firebase
+import dev.gitlive.firebase.crashlytics.crashlytics
+import dev.gitlive.firebase.initialize
 import io.github.aakira.napier.DebugAntilog
 import io.github.aakira.napier.Napier
 import org.koin.core.context.startKoin
@@ -27,8 +30,10 @@ class MainActivity : ComponentActivity() {
             modules(appModules(context = this@MainActivity) + androidModules)
         }
 
-        // Initialize Napier Logger
-        Napier.base(DebugAntilog())
+        Napier.base(DebugAntilog()) // Initialize Napier Logger
+
+        Firebase.initialize(this)
+        Firebase.crashlytics.setCrashlyticsCollectionEnabled(enabled = true)
 
         setContent {
             App()

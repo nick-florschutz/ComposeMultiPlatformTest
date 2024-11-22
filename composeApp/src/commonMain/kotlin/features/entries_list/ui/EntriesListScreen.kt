@@ -51,6 +51,8 @@ class EntriesListScreen: Screen {
         val isLoading by screenModel.isLoading
         val networkConnection by screenModel.networkStatus.collectAsState()
 
+        val firebaseUserEmail by screenModel.firebaseUserEmail.collectAsState(null)
+
         var cameraVisible by remember { mutableStateOf(false) }
 
         StateScreen<List<Person>>(
@@ -86,6 +88,11 @@ class EntriesListScreen: Screen {
                             onValueChange = {
                                 screenModel.setInputText(it)
                             },
+                            label = {
+                                Text(text = "Enter name")
+                            },
+                            singleLine = true,
+                            textStyle = MaterialTheme.typography.displayMedium,
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(16.sdp)
@@ -118,6 +125,12 @@ class EntriesListScreen: Screen {
                             modifier = Modifier.fillMaxWidth()
                         )
 
+                        Text(
+                            text = "Firebase User Email: ${firebaseUserEmail?.email}",
+                            fontSize = 24.ssp,
+                            textAlign = TextAlign.Center,
+                            modifier = Modifier.fillMaxWidth()
+                        )
 
 
                         PullToRefreshLazyColumn(

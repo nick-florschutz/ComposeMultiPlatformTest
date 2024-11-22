@@ -11,6 +11,8 @@ plugins {
     alias(libs.plugins.kotlinSerialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.googleServices)
+    alias(libs.plugins.crashlytics)
 }
 
 kotlin {
@@ -43,6 +45,10 @@ kotlin {
             baseName = "ComposeApp"
             isStatic = true
         }
+
+        tasks["compileKotlinIosArm64"].dependsOn("kspCommonMainKotlinMetadata")
+        tasks["compileKotlinIosSimulatorArm64"].dependsOn("kspCommonMainKotlinMetadata")
+        tasks["compileKotlinIosX64"].dependsOn("kspCommonMainKotlinMetadata")
     }
 
     sourceSets {
@@ -55,13 +61,10 @@ kotlin {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
 
-            // Napier Logging - https://github.com/AAkira/Napier
-            implementation(libs.napier)
-
             // CameraX - https://developer.android.com/jetpack/androidx/releases/camera
             implementation(libs.androidx.camera.lifecycle)
             implementation(libs.androidx.camera.view)
-//            implementation(libs.androidx.camera.core)
+            implementation(libs.kotlinx.coroutines.guava)
             implementation(libs.androidx.camera.camera2)
         }
         commonMain.dependencies {
@@ -91,12 +94,12 @@ kotlin {
 
             /********* Firebase - https://github.com/gitliveapp/firebase-kotlin-sdk/ *********/
             // Firebase Crashlytics
-//            implementation(libs.gitlive.firebase.crashlytics)
-//            implementation(libs.gitlive.firebase.common)
+            api(libs.gitlive.firebase.kotlin.crashlytics)
+            implementation(libs.gitlive.firebase.common)
             // Firebase Auth
-//            implementation(libs.gitlive.firebase.auth)
+            implementation(libs.gitlive.firebase.auth)
             // Firebase Firestore
-//            implementation(libs.gitlive.firebase.firestore)
+            implementation(libs.gitlive.firebase.firestore)
             // Firebase Storage
 //            implementation("dev.gitlive:firebase-storage:1.12.0")
             // Firebase Installations
@@ -145,6 +148,9 @@ kotlin {
 
             // Konnectivity - https://github.com/plusmobileapps/konnectivity
             implementation(libs.konnectivity)
+
+            // Napier Logging - https://github.com/AAkira/Napier
+            implementation(libs.napier)
 
         }
         commonTest {

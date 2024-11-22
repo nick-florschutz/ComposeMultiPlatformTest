@@ -18,6 +18,7 @@ aay-chart = "Beta-0.0.5"
 constraintlayoutComposeMultiplatform = "0.4.0"
 kmpDateTimePicker = "1.0.2"
 kotlinxCoroutinesCore = "1.9.0-RC"
+kotlinxCoroutinesGuava = "1.6.4"
 kotlinxDatetime = "0.6.0"
 windowSizeClassMultiplatform = "0.5.0"
 napier = "2.7.1"
@@ -38,6 +39,8 @@ cameraX = "1.3.4"
 assertk = "0.28.1"
 coreKtx = "1.6.1"
 composeTest = "1.6.8"
+gservices = "4.4.2"
+gradlePlugins-crashlytics = "3.0.2"
 
 [libraries]
 konnectivity = { module = "com.plusmobileapps:konnectivity", version.ref = "konnectivity" }
@@ -55,6 +58,7 @@ aay-chart = { module = "io.github.thechance101:chart", version.ref = "aay-chart"
 constraintlayout-compose-multiplatform = { module = "tech.annexflow.compose:constraintlayout-compose-multiplatform", version.ref = "constraintlayoutComposeMultiplatform" }
 kmp-date-time-picker = { module = "network.chaintech:kmp-date-time-picker", version.ref = "kmpDateTimePicker" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+kotlinx-coroutines-guava = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-guava", version.ref = "kotlinxCoroutinesGuava" }
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "kotlinxDatetime" }
 multi-screensize-support = { module = "dev.chrisbanes.material3:material3-window-size-class-multiplatform", version.ref = "windowSizeClassMultiplatform" }
 napier = { module = "io.github.aakira:napier", version.ref = "napier" }
@@ -66,6 +70,7 @@ gitlive-firebase-common = { module = "dev.gitlive:firebase-common", version.ref 
 gitlive-firebase-crashlytics = { module = "dev.gitlive:firebase-crashlytics", version.ref = "firebase" }
 gitlive-firebase-firestore = { module = "dev.gitlive:firebase-firestore", version.ref = "firebase" }
 gitlive-firebase-installations = { module = "dev.gitlive:firebase-installations", version.ref = "firebase" }
+gitlive-firebase-kotlin-crashlytics = { module = "dev.gitlive:firebase-crashlytics", version.ref = "firebase" }
 voyager-navigator = { module = "cafe.adriel.voyager:voyager-navigator", version.ref = "voyager" }
 voyager-screenModel = { module = "cafe.adriel.voyager:voyager-screenmodel", version.ref = "voyager" }
 voyager-bottomSheetNavigator = { module = "cafe.adriel.voyager:voyager-bottom-sheet-navigator", version.ref = "voyager" }
@@ -101,3 +106,5 @@ kotlinMultiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref =
 kotlinSerialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 room = { id = "androidx.room", version.ref = "room" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+googleServices = { id = "com.google.gms.google-services", version.ref = "gservices" }
+crashlytics = { id = "com.google.firebase.crashlytics", version.ref = "gradlePlugins-crashlytics" }

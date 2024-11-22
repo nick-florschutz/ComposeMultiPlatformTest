@@ -9,7 +9,6 @@ import platform.Foundation.NSURL
 import platform.Foundation.NSUserDomainMask
 
 fun getDatabaseBuilder(): RoomDatabase.Builder<PeopleDatabase> {
-//    val dbFilePath = NSHomeDirectory() + "/people.db"
     val dbFilePath = "${fileDirectory()}/people.db"
     return Room.databaseBuilder<PeopleDatabase>(
         name = dbFilePath,
